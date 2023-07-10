@@ -15,6 +15,20 @@ run/main_scene="res://Game/Game.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="viewport"
+
+[layer_names]
+
+2d_physics/layer_1="Walls"
+2d_physics/layer_2="King"
+2d_physics/layer_3="Barrels"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
