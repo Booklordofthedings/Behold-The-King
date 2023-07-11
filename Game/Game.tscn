@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://be6qvivte1us3"]
+[gd_scene load_steps=8 format=3 uid="uid://be6qvivte1us3"]
 
+[ext_resource type="Script" path="res://Game/scripts/Game.gd" id="1_4ifms"]
 [ext_resource type="Texture2D" uid="uid://bdwht7wa7w1vb" path="res://Game/assets/Background.png" id="1_l02gg"]
 [ext_resource type="PackedScene" uid="uid://dccdpyni3p6uk" path="res://Game/King/King.tscn" id="2_5xqhl"]
+[ext_resource type="PackedScene" uid="uid://btpk6fvkdlvr6" path="res://Game/Barrel/Barrel.tscn" id="3_f6nte"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bu2hi"]
 size = Vector2(652, 50)
@@ -13,6 +15,8 @@ size = Vector2(45, 681)
 size = Vector2(1193, 102)
 
 [node name="Game" type="Node"]
+script = ExtResource("1_4ifms")
+toSpawn = ExtResource("3_f6nte")
 
 [node name="Background" type="Control" parent="."]
 layout_mode = 3
@@ -42,12 +46,14 @@ position = Vector2(316, 15)
 shape = SubResource("RectangleShape2D_bu2hi")
 
 [node name="RightWall" type="CollisionShape2D" parent="Walls/StaticBody2D"]
-position = Vector2(665, 280)
+position = Vector2(662, 280)
 shape = SubResource("RectangleShape2D_hucd0")
 
 [node name="LowerWall" type="CollisionShape2D" parent="Walls/StaticBody2D"]
-position = Vector2(553, 417)
+position = Vector2(545, 411)
 shape = SubResource("RectangleShape2D_g76x5")
 
 [node name="King" parent="." instance=ExtResource("2_5xqhl")]
 position = Vector2(176, 262)
+speed = 250
+hor_speed = 80
