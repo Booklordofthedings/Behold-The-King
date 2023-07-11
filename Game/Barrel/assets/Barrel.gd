@@ -11,7 +11,7 @@ func _physics_process(delta):
 	if position.x < -50:
 		queue_free()
 	var res = move_and_collide(Vector2(-speed * delta, 0))
-	sprite.rotate(-1 * delta)
+	sprite.rotate(-1 * delta * 2)
 
 func destroy():
 	queue_free()

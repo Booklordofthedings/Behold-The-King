@@ -1,18 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://dccdpyni3p6uk"]
+[gd_scene load_steps=5 format=3 uid="uid://dccdpyni3p6uk"]
 
 [ext_resource type="Script" path="res://Game/King/King.gd" id="1_3kwt6"]
 [ext_resource type="Texture2D" uid="uid://dxp1fwjenib47" path="res://Game/King/assets/King_Sprite_Sheet.png" id="1_4ianp"]
+[ext_resource type="Texture2D" uid="uid://vkhiisoyjo5h" path="res://Game/King/assets/dust.png" id="3_q66j1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qictc"]
 radius = 44.0
 height = 170.0
 
-[node name="King" type="CharacterBody2D"]
+[node name="King" type="CharacterBody2D" node_paths=PackedStringArray("stunned_sprite")]
 scale = Vector2(0.2, 0.2)
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_3kwt6")
 speed = 200
+stun_time = 0.5
+stunned_knockback = 500.0
+stunned_sprite = NodePath("Sprite2D2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_4ianp")
@@ -20,3 +24,8 @@ hframes = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_qictc")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(140, 5)
+scale = Vector2(6, 6)
+texture = ExtResource("3_q66j1")
