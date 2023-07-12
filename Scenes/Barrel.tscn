@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://btpk6fvkdlvr6"]
 
-[ext_resource type="Texture2D" uid="uid://dbgblbmr60fw5" path="res://Game/Barrel/assets/Barrel.png" id="1_1vomi"]
-[ext_resource type="Script" path="res://Game/Barrel/assets/Barrel.gd" id="1_jq6m2"]
-[ext_resource type="Texture2D" uid="uid://bs041ghktl52y" path="res://Game/Barrel/assets/Barrel_Shadow.png" id="2_ymdf8"]
+[ext_resource type="Texture2D" uid="uid://dbgblbmr60fw5" path="res://Assets/Sprites/Barrel/barrel.png" id="1_1vomi"]
+[ext_resource type="Script" path="res://Scripts/barrel.gd" id="1_jq6m2"]
+[ext_resource type="Texture2D" uid="uid://bs041ghktl52y" path="res://Assets/Sprites/Barrel/barrel_shadow.png" id="2_ymdf8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1x2ma"]
 size = Vector2(11, 12)

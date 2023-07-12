@@ -6,8 +6,6 @@ extends CharacterBody2D
 @export var barrier = 600
 var direction = 1;
 
-
-
 func _physics_process(delta):
 	stunned_sprite.modulate.a = stunned_alpha
 	var res = move_and_collide(
@@ -16,6 +14,9 @@ func _physics_process(delta):
 	
 	if res:
 		on_knockback(res)
+	
+	if position.x < -70:
+		get_tree().quit()
 
 
 @export_group("Knockback Settings")

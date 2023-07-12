@@ -1,0 +1,95 @@
+[gd_scene load_steps=11 format=3 uid="uid://be6qvivte1us3"]
+
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_4ifms"]
+[ext_resource type="Texture2D" uid="uid://bdwht7wa7w1vb" path="res://Assets/Sprites/Game/background.png" id="1_l02gg"]
+[ext_resource type="PackedScene" uid="uid://dccdpyni3p6uk" path="res://Scenes/King.tscn" id="2_5xqhl"]
+[ext_resource type="PackedScene" uid="uid://btpk6fvkdlvr6" path="res://Scenes/Barrel.tscn" id="3_f6nte"]
+[ext_resource type="Texture2D" uid="uid://bpisp62o7qnmd" path="res://Assets/Sprites/Common/coin.png" id="5_a5osa"]
+[ext_resource type="FontFile" uid="uid://dstkdot5rkpn3" path="res://Assets/Fonts/Geizer.otf" id="6_t7gjj"]
+[ext_resource type="PackedScene" uid="uid://ch8xy86i17qvu" path="res://Scenes/Player.tscn" id="7_f8j10"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bu2hi"]
+size = Vector2(652, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hucd0"]
+size = Vector2(45, 681)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g76x5"]
+size = Vector2(1193, 102)
+
+[node name="Game" type="Node" node_paths=PackedStringArray("lbl")]
+script = ExtResource("1_4ifms")
+toSpawn = ExtResource("3_f6nte")
+lbl = NodePath("Control/MarginContainer/HBoxContainer/Label")
+
+[node name="Background" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_l02gg")
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls" groups=["Walls"]]
+collision_mask = 3
+
+[node name="UpperWall" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(316, 15)
+shape = SubResource("RectangleShape2D_bu2hi")
+
+[node name="RightWall" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(662, 280)
+shape = SubResource("RectangleShape2D_hucd0")
+
+[node name="LowerWall" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(545, 411)
+shape = SubResource("RectangleShape2D_g76x5")
+
+[node name="King" parent="." instance=ExtResource("2_5xqhl")]
+position = Vector2(176, 262)
+speed = 250
+hor_speed = 80
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_a5osa")
+
+[node name="Label" type="Label" parent="Control/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_t7gjj")
+theme_override_font_sizes/font_size = 0
+text = "100"
+
+[node name="Player" parent="." instance=ExtResource("7_f8j10")]

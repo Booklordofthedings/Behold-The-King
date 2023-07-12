@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dccdpyni3p6uk"]
 
-[ext_resource type="Script" path="res://Game/King/King.gd" id="1_3kwt6"]
-[ext_resource type="Texture2D" uid="uid://dxp1fwjenib47" path="res://Game/King/assets/King_Sprite_Sheet.png" id="1_4ianp"]
-[ext_resource type="Texture2D" uid="uid://vkhiisoyjo5h" path="res://Game/King/assets/dust.png" id="3_q66j1"]
+[ext_resource type="Script" path="res://Scripts/king.gd" id="1_3kwt6"]
+[ext_resource type="Texture2D" uid="uid://dxp1fwjenib47" path="res://Assets/Sprites/King/king_sprites.png" id="1_4ianp"]
+[ext_resource type="Texture2D" uid="uid://vkhiisoyjo5h" path="res://Assets/Sprites/King/dust.png" id="3_q66j1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qictc"]
 radius = 44.0

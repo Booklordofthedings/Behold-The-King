@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vkhiisoyjo5h"
-path="res://.godot/imported/dust.png-3fc2cea2035afa70d56d18e2074a8865.ctex"
+uid="uid://ssux2eyw1q5k"
+path="res://.godot/imported/attack_symbol.png-97c6558d8d38868e1622508b7f6697ff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game/King/assets/dust.png"
-dest_files=["res://.godot/imported/dust.png-3fc2cea2035afa70d56d18e2074a8865.ctex"]
+source_file="res://Assets/Sprites/Player/attack_symbol.png"
+dest_files=["res://.godot/imported/attack_symbol.png-97c6558d8d38868e1622508b7f6697ff.ctex"]
 
 [params]
 

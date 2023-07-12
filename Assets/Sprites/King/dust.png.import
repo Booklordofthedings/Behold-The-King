@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbgblbmr60fw5"
-path="res://.godot/imported/Barrel.png-3ad03b753653a2d954152aefa6cf575e.ctex"
+uid="uid://vkhiisoyjo5h"
+path="res://.godot/imported/dust.png-1b57a260cd1ab4cc9222063b45c83e7d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game/Barrel/assets/Barrel.png"
-dest_files=["res://.godot/imported/Barrel.png-3ad03b753653a2d954152aefa6cf575e.ctex"]
+source_file="res://Assets/Sprites/King/dust.png"
+dest_files=["res://.godot/imported/dust.png-1b57a260cd1ab4cc9222063b45c83e7d.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdwht7wa7w1vb"
-path="res://.godot/imported/Background.png-3c249d2acbe853ba80a7ee3dff3e4b18.ctex"
+uid="uid://dbgblbmr60fw5"
+path="res://.godot/imported/barrel.png-467a75bd87eddaf8820877c3acb7e223.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game/assets/Background.png"
-dest_files=["res://.godot/imported/Background.png-3c249d2acbe853ba80a7ee3dff3e4b18.ctex"]
+source_file="res://Assets/Sprites/Barrel/barrel.png"
+dest_files=["res://.godot/imported/barrel.png-467a75bd87eddaf8820877c3acb7e223.ctex"]
 
 [params]
 
