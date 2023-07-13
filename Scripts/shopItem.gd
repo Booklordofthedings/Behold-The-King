@@ -1,18 +1,47 @@
 @tool
-extends HBoxContainer
+extends PanelContainer
 
-@export var text : String = ""
-@export var image : Texture2D = load("res://Assets/Sprites/Common/coin.png")
+@export_group("Item Variables")
+@export var id : String = "default"
+@export var cost : int = 100
+@export var title : String = "Pettable Dogs"
+@export var description : String = "Makes dogs even more pettable"
+@export var texture : Texture2D = load("res://Assets/Sprites/Common/x64.png")
 
-var TextLabel : Label
-var txt : TextureRect
+@export_group("Intern")
+@export var item_title_label : Label
+@export var item_cost_label : Label
+@export var item_description_label : Label
+@export var item_icon : TextureRect
+@export var item_unavailable : Panel
+
+var coins : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	TextLabel = get_child(1)
-	txt = get_child(0)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	item_icon.texture = texture
+	item_title_label.text = title
+	item_cost_label.text = str(cost)
+	item_description_label.text = description
+	try_retrieve_coins()
+	if coins >= cost:
+		item_unavailable.visible = false
+	if get_node("/root/DataStore").read(id, 0):
+		visible = false
+		
 func _process(delta):
-	TextLabel.text = text
-	txt.texture = image
+	if not Engine.is_editor_hint():
+		if Input.is_action_just_pressed("player_action") and in_focus and coins >= cost:
+			get_node("/root/DataStore").write("coins", coins - cost)
+			get_node("/root/DataStore").write(id,"1")
+			visible = false
+	
+func try_retrieve_coins():
+	coins = get_node("/root/DataStore").read("coins", 0)
+
+
+var in_focus : bool = false
+func on_entered():
+	in_focus = true
+func on_exited():
+	in_focus = false

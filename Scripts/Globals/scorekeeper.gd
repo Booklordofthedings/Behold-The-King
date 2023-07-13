@@ -7,7 +7,7 @@ var doScore : bool = false
 
 func barrel_destroyed():
 	if doScore:
-		score += 5
+		score += 1
 
 func start_scoring():
 	doScore = true
@@ -18,4 +18,4 @@ func stop_scoring():
 
 func _process(delta):
 	if doScore:
-		score = score + delta * 10
+		score = score + delta / 2
