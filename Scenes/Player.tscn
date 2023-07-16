@@ -1,17 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://ch8xy86i17qvu"]
+[gd_scene load_steps=8 format=3 uid="uid://ch8xy86i17qvu"]
 
 [ext_resource type="Texture2D" uid="uid://b51wfwymat088" path="res://Assets/Sprites/Player/player_sprites.png" id="1_6nhjj"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_w3ppi"]
+[ext_resource type="Texture2D" uid="uid://b3uoeyoah1suf" path="res://Assets/Sprites/Common/x64.png" id="3_cqym2"]
 [ext_resource type="Texture2D" uid="uid://ssux2eyw1q5k" path="res://Assets/Sprites/Player/attack_symbol.png" id="3_q0xqy"]
+[ext_resource type="Script" path="res://Scripts/attack.gd" id="4_qwbl8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b5klm"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7rn7q"]
+radius = 36.0
+height = 152.0
+
 [node name="Player" type="Node"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("ability")]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("attack", "ability")]
 collision_layer = 8
 script = ExtResource("1_w3ppi")
 speed = 100.0
+attack = NodePath("Area2D")
 ability = NodePath("../Control/MarginContainer/HBoxContainer/VBoxContainer/TextureProgressBar")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
@@ -21,6 +28,22 @@ vframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("CircleShape2D_b5klm")
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
+visible = false
+position = Vector2(25, 2)
+collision_layer = 2
+collision_mask = 4
+monitoring = false
+script = ExtResource("4_qwbl8")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D/Area2D"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_cqym2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+scale = Vector2(0.25, 0.25)
+shape = SubResource("CapsuleShape2D_7rn7q")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -67,3 +90,5 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 8
 text = "[Space]"
+
+[connection signal="body_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D/Area2D" method="_on_area_entered"]
