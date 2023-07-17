@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://be6qvivte1us3"]
+[gd_scene load_steps=12 format=3 uid="uid://be6qvivte1us3"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_4ifms"]
 [ext_resource type="Texture2D" uid="uid://bdwht7wa7w1vb" path="res://Assets/Sprites/Game/background.png" id="1_l02gg"]
@@ -7,6 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://bpisp62o7qnmd" path="res://Assets/Sprites/Common/coin.png" id="5_a5osa"]
 [ext_resource type="FontFile" uid="uid://dstkdot5rkpn3" path="res://Assets/Fonts/Geizer.otf" id="6_t7gjj"]
 [ext_resource type="PackedScene" uid="uid://ch8xy86i17qvu" path="res://Scenes/Player.tscn" id="7_f8j10"]
+
+[sub_resource type="Curve" id="Curve_donad"]
+max_value = 2.0
+_data = [Vector2(0, 1.97895), 0.0, -13.9989, 0, 0, Vector2(0.495451, 0.589474), -2.82808, -2.82808, 0, 0, Vector2(1, 0.0421052), -3.36167, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bu2hi"]
 size = Vector2(652, 50)
@@ -19,6 +24,7 @@ size = Vector2(1193, 102)
 
 [node name="Game" type="Node" node_paths=PackedStringArray("lbl")]
 script = ExtResource("1_4ifms")
+curve = SubResource("Curve_donad")
 toSpawn = ExtResource("3_f6nte")
 lbl = NodePath("Control/MarginContainer/HBoxContainer/Label")
 
