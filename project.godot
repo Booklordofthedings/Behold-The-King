@@ -67,6 +67,7 @@ player_action={
 2d_physics/layer_2="King"
 2d_physics/layer_3="Barrels"
 2d_physics/layer_4="Player"
+2d_physics/layer_5="Attack"
 
 [rendering]
 

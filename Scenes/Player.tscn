@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://b51wfwymat088" path="res://Assets/Sprites/Player/player_sprites.png" id="1_6nhjj"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_w3ppi"]
-[ext_resource type="Texture2D" uid="uid://b3uoeyoah1suf" path="res://Assets/Sprites/Common/x64.png" id="3_cqym2"]
 [ext_resource type="Texture2D" uid="uid://ssux2eyw1q5k" path="res://Assets/Sprites/Player/attack_symbol.png" id="3_q0xqy"]
 [ext_resource type="Script" path="res://Scripts/attack.gd" id="4_qwbl8"]
+[ext_resource type="Texture2D" uid="uid://bm8efr33cimhi" path="res://Assets/Sprites/Player/Scythe.png" id="4_te721"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b5klm"]
 
@@ -14,12 +14,13 @@ height = 152.0
 
 [node name="Player" type="Node"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("attack", "ability")]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("attack", "ability", "toRotate")]
 collision_layer = 8
 script = ExtResource("1_w3ppi")
 speed = 100.0
 attack = NodePath("Area2D")
 ability = NodePath("../Control/MarginContainer/HBoxContainer/VBoxContainer/TextureProgressBar")
+toRotate = NodePath("Area2D/Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 texture = ExtResource("1_6nhjj")
@@ -30,16 +31,18 @@ vframes = 2
 shape = SubResource("CircleShape2D_b5klm")
 
 [node name="Area2D" type="Area2D" parent="CharacterBody2D"]
-visible = false
-position = Vector2(25, 2)
-collision_layer = 2
+position = Vector2(21, 2)
+collision_layer = 16
 collision_mask = 4
 monitoring = false
 script = ExtResource("4_qwbl8")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D/Area2D"]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("3_cqym2")
+position = Vector2(-5, -2)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_te721")
+centered = false
+offset = Vector2(0, -16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
 scale = Vector2(0.25, 0.25)

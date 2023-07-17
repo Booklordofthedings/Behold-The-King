@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var speed : float = 10
 @export var attack : Area2D
 @export var ability : TextureProgressBar
+@export var toRotate : Sprite2D
 var tween : Tween
 var timer = 100
 
@@ -30,10 +31,12 @@ func _physics_process(delta):
 		_timer.start()
 		_timer.timeout.connect(attack_end)
 		
-		
-		tween = get_tree().create_tween();
+		toRotate.rotation = 0
+		tween = get_tree().create_tween()
 		timer = 0
-		tween.parallel().tween_property(self, "timer", 100, 1.2)
+		tween.parallel().tween_property(self, "timer", 100, 1)
+		tween.parallel().tween_property(toRotate, "rotation_degrees", 90, 0.1)
+		
 		
 		
 func attack_end():
