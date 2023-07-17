@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmopqu5t30e8x"]
+
+[ext_resource type="Texture2D" uid="uid://bt6i47nujjqup" path="res://Assets/Sprites/MainMenu/Background.png" id="1_pxgey"]
+
+[node name="Startmenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_pxgey")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="Start" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Start Game"
+
+[node name="Guide" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Guide"
+
+[node name="Credits" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Credits"
+
+[node name="Exit" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Exit Game"
