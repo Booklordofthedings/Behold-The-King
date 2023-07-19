@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2pavlwm6nug4"]
+
+[ext_resource type="PackedScene" uid="uid://cnk5olkd81ctk" path="res://Scenes/Guide.tscn" id="1_kc7ia"]
+
+[node name="Guide" instance=ExtResource("1_kc7ia")]
+
+[node name="Label" parent="TextureRect/MarginContainer" index="0"]
+text = "Remake of a gamejam game made in 48 hours for the GMTK 2023 gamejam
+Made by Four Fun Games: Jannis, Leon, Fabio, Johannes
+Music used:
+"
