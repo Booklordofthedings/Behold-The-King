@@ -3,8 +3,11 @@ extends CharacterBody2D
 @export var speed : float = 10
 @export var attack : Area2D
 @export var ability : TextureProgressBar
+@export var dash_abilit : TextureProgressBar
 @export var toRotate : Sprite2D
 var tween : Tween
+var dash : Tween
+var dash_timer = 100
 var timer = 100
 
 func _ready():
@@ -20,6 +23,7 @@ func _physics_process(delta):
 		position.x = 0
 		
 	ability.value = timer
+	dash_abilit.value = dash_timer
 	if Input.is_action_just_pressed("player_action") and timer == 100:
 		#Attack 
 		attack.visible = true
@@ -36,6 +40,17 @@ func _physics_process(delta):
 		timer = 0
 		tween.parallel().tween_property(self, "timer", 100, 1)
 		tween.parallel().tween_property(toRotate, "rotation_degrees", 90, 0.1)
+		
+	if Input.is_action_just_pressed("player_dash") and dash_timer == 100:
+		dash_timer = 0
+		var base_speed =  speed
+		speed = speed * 4
+		dash = get_tree().create_tween()
+		dash.parallel().tween_property(self, "speed", base_speed, 0.3)
+		dash.parallel().tween_property(self, "dash_timer", 100, 3)
+		
+		
+		
 		
 		
 		

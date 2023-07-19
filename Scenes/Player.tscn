@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://ch8xy86i17qvu"]
+[gd_scene load_steps=9 format=3 uid="uid://ch8xy86i17qvu"]
 
 [ext_resource type="Texture2D" uid="uid://b51wfwymat088" path="res://Assets/Sprites/Player/player_sprites.png" id="1_6nhjj"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_w3ppi"]
 [ext_resource type="Texture2D" uid="uid://ssux2eyw1q5k" path="res://Assets/Sprites/Player/attack_symbol.png" id="3_q0xqy"]
 [ext_resource type="Script" path="res://Scripts/attack.gd" id="4_qwbl8"]
 [ext_resource type="Texture2D" uid="uid://bm8efr33cimhi" path="res://Assets/Sprites/Player/Scythe.png" id="4_te721"]
+[ext_resource type="Texture2D" uid="uid://bml0jkqp3brha" path="res://Assets/Sprites/Player/Dash_Icon.png" id="6_v3sm1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b5klm"]
 
@@ -14,12 +15,13 @@ height = 152.0
 
 [node name="Player" type="Node"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("attack", "ability", "toRotate")]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("attack", "ability", "dash_abilit", "toRotate")]
 collision_layer = 8
 script = ExtResource("1_w3ppi")
 speed = 100.0
 attack = NodePath("Area2D")
 ability = NodePath("../Control/MarginContainer/HBoxContainer/VBoxContainer/TextureProgressBar")
+dash_abilit = NodePath("../Control/MarginContainer/HBoxContainer/VBoxContainer2/TextureProgressBar")
 toRotate = NodePath("Area2D/Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
@@ -93,5 +95,26 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 8
 text = "[Space]"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Control/MarginContainer/HBoxContainer/VBoxContainer2"]
+z_index = 1
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+step = 0.1
+value = 100.0
+fill_mode = 4
+texture_progress = ExtResource("6_v3sm1")
+
+[node name="Label" type="Label" parent="Control/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 8
+text = "[Shift]"
 
 [connection signal="body_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D/Area2D" method="_on_area_entered"]
