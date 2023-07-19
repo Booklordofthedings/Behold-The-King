@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnk5olkd81ctk"]
+[gd_scene load_steps=6 format=3 uid="uid://cnk5olkd81ctk"]
 
+[ext_resource type="Script" path="res://Scripts/Startmenu.gd" id="1_5gb04"]
 [ext_resource type="Texture2D" uid="uid://bdwht7wa7w1vb" path="res://Assets/Sprites/Game/background.png" id="1_xf5vr"]
+[ext_resource type="Texture2D" uid="uid://dbgm84o2dmo70" path="res://Assets/Sprites/Common/button.png" id="2_fn88k"]
+[ext_resource type="FontFile" uid="uid://c63bc80eb1jbi" path="res://Assets/Fonts/alagard.ttf" id="2_u165l"]
+[ext_resource type="Texture2D" uid="uid://b51wfwymat088" path="res://Assets/Sprites/Player/player_sprites.png" id="4_5orpf"]
 
 [node name="Guide" type="Control"]
 layout_mode = 3
@@ -9,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_5gb04")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -19,7 +24,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_xf5vr")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,16 +32,58 @@ anchor_bottom = 1.0
 offset_top = 40.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer"]
+[node name="Label" type="Label" parent="TextureRect/MarginContainer"]
 layout_mode = 2
-text = "Protect the King from being knocked of the screen
-Move with wasd and attack with space
-Gain Coins for destroying barrels or surviving
-Spend coins in the shop on upgrades
-Keep the king alive
-"
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.941176, 0.709804, 0.254902, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_u165l")
+text = "1: Keep the king alive!
+2: Barrels stun and knockback the king
+3: If he gets knocked out of the screen he dies
+4: Use your attack [Space] to destroy barrels
+5: Protecting the king grants coins
+6: Use coins in the shop after the rounds to upgrade
+7: Try to get the highest possible score"
+
+[node name="TextureButton" type="TextureButton" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 541.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -325.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("2_fn88k")
+
+[node name="Label" type="Label" parent="TextureRect/TextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.941176, 0.709804, 0.254902, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_u165l")
+text = "Exit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+position = Vector2(66, 97)
+texture = ExtResource("4_5orpf")
+hframes = 4
+vframes = 2
+
+[connection signal="pressed" from="TextureRect/TextureButton" to="." method="main"]

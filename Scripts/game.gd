@@ -17,7 +17,7 @@ func _process(delta):
 	lbl.text = str(round(get_node("/root/Scorekeeper").score))
 	
 	if timer <= 0:
-		timer = curve.sample(min(spawn_timer/140,1))
+		timer = curve.sample(min(spawn_timer/120,1))
 		var spwn = toSpawn.instantiate()
 		add_child(spwn)
 	timer = timer - delta
