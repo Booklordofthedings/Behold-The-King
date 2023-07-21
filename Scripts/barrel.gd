@@ -5,7 +5,7 @@ extends CharacterBody2D
 
 func _ready():
 	position.x = 800
-	position.y = 50 + randi() % 260
+	position.y = 60 + randi() % 260
 
 func _physics_process(delta):
 	if position.x < -50:
