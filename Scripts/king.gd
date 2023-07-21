@@ -6,6 +6,17 @@ extends CharacterBody2D
 @export var barrier = 600
 var direction = 1;
 
+func _ready():
+	var l = get_node("/root/DataStore").read("less_stun", false)
+	if l:
+		stun_time = 0.3
+	var r = get_node("/root/DataStore").read("more_right", false)
+	if not r:
+		barrier = 500
+	var k = get_node("/root/DataStore").read("less_knockback", false)
+	if k:
+		stunned_knockback  = 450
+
 func _physics_process(delta):
 	stunned_sprite.modulate.a = stunned_alpha
 	var res = move_and_collide(
@@ -15,17 +26,18 @@ func _physics_process(delta):
 	if res:
 		on_knockback(res)
 	
-	if position.x < -70:
-		get_tree().quit()
+	if position.x < -20:
+		get_node("/root/Scorekeeper").stop_scoring()
+		get_tree().change_scene_to_file("res://Scenes/DeathMenu.tscn")
 
 
 @export_group("Knockback Settings")
 ## How long the king will be knocked back for
 @export var knockback_time : float = 0.3
 ## How long the king will stay stunned after a collision
-@export var stun_time : float = 0.1
+@export var stun_time : float = 0.6
 ## How much the user will be knocked back
-@export var stunned_knockback : float = 0
+@export var stunned_knockback : float = 650
 ## The stunned Sprite/Animation
 @export var stunned_sprite : Sprite2D
 

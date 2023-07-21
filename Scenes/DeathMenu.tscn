@@ -1,0 +1,141 @@
+[gd_scene load_steps=7 format=3 uid="uid://dn57ngg87odpm"]
+
+[ext_resource type="Script" path="res://Scripts/Startmenu.gd" id="1_3irv2"]
+[ext_resource type="Texture2D" uid="uid://bwrbgtkey86vv" path="res://Assets/Sprites/DeathMenu/Death Menu BG.png" id="2_7cf06"]
+[ext_resource type="Texture2D" uid="uid://dbgm84o2dmo70" path="res://Assets/Sprites/Common/button.png" id="3_kqy8x"]
+[ext_resource type="Script" path="res://Scripts/DeathLabel.gd" id="4_bg0x1"]
+[ext_resource type="FontFile" uid="uid://c63bc80eb1jbi" path="res://Assets/Fonts/alagard.ttf" id="4_txgdt"]
+[ext_resource type="Texture2D" uid="uid://bpisp62o7qnmd" path="res://Assets/Sprites/Common/coin.png" id="5_6o1p5"]
+
+[node name="Startmenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3irv2")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 1.00858)
+texture = ExtResource("2_7cf06")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("5_6o1p5")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.941176, 0.709804, 0.254902, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_txgdt")
+text = "23423"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_bg0x1")
+
+[node name="TextureButton2" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_kqy8x")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/TextureButton2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.5
+offset_top = -15.5
+offset_right = 47.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.941176, 0.709804, 0.254902, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_txgdt")
+text = "Restart
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton3" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_kqy8x")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/TextureButton3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.5
+offset_top = -15.5
+offset_right = 47.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.941176, 0.709804, 0.254902, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_txgdt")
+text = "Shop
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton4" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_kqy8x")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/TextureButton4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.5
+offset_top = -15.5
+offset_right = 47.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.941176, 0.709804, 0.254902, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_txgdt")
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/TextureButton2" to="." method="start"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/TextureButton3" to="." method="store"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/TextureButton4" to="." method="exit"]

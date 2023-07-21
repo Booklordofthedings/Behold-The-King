@@ -90,12 +90,17 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource("5_a5osa")
+stretch_mode = 2
 
 [node name="Label" type="Label" parent="Control/MarginContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_t7gjj")
-theme_override_font_sizes/font_size = 0
+theme_override_font_sizes/font_size = 30
 text = "100"
+vertical_alignment = 1
 
 [node name="Player" parent="." instance=ExtResource("7_f8j10")]

@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dul2sp8thx21m" path="res://Assets/Sprites/Shop/bars.png" id="1_pldl3"]
 [ext_resource type="Texture2D" uid="uid://b3uoeyoah1suf" path="res://Assets/Sprites/Common/x64.png" id="2_cuthy"]
 [ext_resource type="Script" path="res://Scripts/shopItem.gd" id="2_wgw52"]
-[ext_resource type="FontFile" uid="uid://b3xb5o6i5bxcg" path="res://Assets/Fonts/Nohemi-Medium.ttf" id="3_een0x"]
 [ext_resource type="FontFile" uid="uid://dstkdot5rkpn3" path="res://Assets/Fonts/Geizer.otf" id="3_ptq8y"]
+[ext_resource type="FontFile" uid="uid://c63bc80eb1jbi" path="res://Assets/Fonts/alagard.ttf" id="5_tflj7"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y3w4a"]
 content_margin_left = 0.0
@@ -26,7 +26,6 @@ bg_color = Color(0, 0, 0, 0.513726)
 [node name="PanelContainer" type="PanelContainer" node_paths=PackedStringArray("item_title_label", "item_cost_label", "item_description_label", "item_icon", "item_unavailable")]
 theme_override_styles/panel = SubResource("StyleBoxTexture_y3w4a")
 script = ExtResource("2_wgw52")
-id = null
 cost = 0
 texture = ExtResource("2_cuthy")
 item_title_label = NodePath("PanelContainer/VBoxContainer2/HBoxContainer/VBoxContainer/Title")
@@ -48,6 +47,7 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer2/HBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 4
 texture = ExtResource("2_cuthy")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer2/HBoxContainer"]
@@ -58,15 +58,17 @@ size_flags_vertical = 0
 [node name="Title" type="Label" parent="PanelContainer/VBoxContainer2/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_ptq8y")
 theme_override_font_sizes/font_size = 20
-text = "Red Barrels"
+text = "Pettable Dogs"
 
 [node name="Description" type="Label" parent="PanelContainer/VBoxContainer2/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_een0x")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_tflj7")
 theme_override_font_sizes/font_size = 12
-text = "Barrels that explode on contact, but grant far more money if destroyed "
+text = "Makes dogs even more pettable"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer2"]
 layout_mode = 2
@@ -76,10 +78,11 @@ size_flags_horizontal = 8
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = 0
-theme_override_fonts/font = ExtResource("3_een0x")
+theme_override_fonts/font = ExtResource("5_tflj7")
 theme_override_font_sizes/font_size = 12
-text = "700"
+text = "0"
 
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer2/HBoxContainer2"]
 layout_mode = 2

@@ -14,3 +14,6 @@ func credits():
 	
 func main():
 	get_tree().change_scene_to_file("res://Scenes/Startmenu.tscn")
+	
+func store():
+	get_tree().change_scene_to_file("res://Scenes/Shop.tscn")

@@ -1,14 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2j6k7b535t1y"]
+[gd_scene load_steps=10 format=3 uid="uid://d2j6k7b535t1y"]
 
+[ext_resource type="Script" path="res://Scripts/Shop.gd" id="1_63544"]
 [ext_resource type="Texture2D" uid="uid://fb1y4fjs8j1j" path="res://Assets/Sprites/Shop/Top.png" id="1_bl2b5"]
 [ext_resource type="Texture2D" uid="uid://bpisp62o7qnmd" path="res://Assets/Sprites/Common/coin.png" id="1_r5fvu"]
+[ext_resource type="Texture2D" uid="uid://bdwht7wa7w1vb" path="res://Assets/Sprites/Game/background.png" id="2_aa107"]
 [ext_resource type="FontFile" uid="uid://dstkdot5rkpn3" path="res://Assets/Fonts/Geizer.otf" id="2_i7t3o"]
 [ext_resource type="PackedScene" uid="uid://b45aueh2df3q3" path="res://Scenes/ShopItem.tscn" id="4_4om5k"]
-[ext_resource type="Texture2D" uid="uid://b4ofb0v5tinuc" path="res://Assets/Sprites/Common/close.png" id="4_gaymo"]
+[ext_resource type="Texture2D" uid="uid://dbgm84o2dmo70" path="res://Assets/Sprites/Common/button.png" id="4_60q3q"]
+[ext_resource type="Script" path="res://Scripts/Startmenu.gd" id="5_k8ddq"]
+[ext_resource type="FontFile" uid="uid://c63bc80eb1jbi" path="res://Assets/Fonts/alagard.ttf" id="7_bxpec"]
 
 [node name="Shop" type="Node"]
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." node_paths=PackedStringArray("coin_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,8 +20,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("1_63544")
+coin_label = NodePath("MarginContainer/Coins/HBoxContainer/Label")
+
+[node name="TextureRect2" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_aa107")
 
 [node name="TextureRect" type="TextureRect" parent="Control"]
+visible = false
 layout_mode = 0
 offset_right = 640.0
 offset_bottom = 100.0
@@ -40,7 +56,7 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme_override_colors/font_color = Color(0.278431, 0.27451, 0.317647, 1)
+theme_override_colors/font_color = Color(0.941176, 0.709804, 0.254902, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_i7t3o")
@@ -61,20 +77,40 @@ offset_left = -92.0
 offset_bottom = 26.0
 grow_horizontal = 0
 
-[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/Coins/HBoxContainer"]
-layout_mode = 2
-texture = ExtResource("1_r5fvu")
-
 [node name="Label" type="Label" parent="Control/MarginContainer/Coins/HBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_bxpec")
 theme_override_font_sizes/font_size = 15
 text = "sadsadsa"
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/Coins/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("1_r5fvu")
+stretch_mode = 2
 
 [node name="TextureButton" type="TextureButton" parent="Control/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
-texture_normal = ExtResource("4_gaymo")
+texture_normal = ExtResource("4_60q3q")
+script = ExtResource("5_k8ddq")
+
+[node name="Label" type="Label" parent="Control/MarginContainer/TextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.941176, 0.709804, 0.254902, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_bxpec")
+text = "Back"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control"]
 layout_mode = 1
@@ -89,13 +125,39 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ShopItem" parent="Control/ScrollContainer/VBoxContainer" instance=ExtResource("4_4om5k")]
+[node name="More_Right" parent="Control/ScrollContainer/VBoxContainer" instance=ExtResource("4_4om5k")]
 layout_mode = 2
-id = "default"
-cost = 100
-title = "THis is a title"
+id = "more_right"
+cost = 60
+title = "Safety Training"
+description = "The King tries to keep himself alive longer by trying to stay further to the right"
 
-[node name="ShopItem2" parent="Control/ScrollContainer/VBoxContainer" instance=ExtResource("4_4om5k")]
+[node name="Quick_Attack" parent="Control/ScrollContainer/VBoxContainer" instance=ExtResource("4_4om5k")]
 layout_mode = 2
-id = "default"
-cost = 100
+id = "quick_attack"
+cost = 120
+title = "Quick Attack"
+description = "Reduces your attack cooldown, to make it easier to protect the king"
+
+[node name="Less_Stun" parent="Control/ScrollContainer/VBoxContainer" instance=ExtResource("4_4om5k")]
+layout_mode = 2
+id = "less_stun"
+cost = 200
+title = "Pain Medication"
+description = "Reduces the amount of time that the king will be stunned after being hit by a person sized barrel."
+
+[node name="Passive_Income" parent="Control/ScrollContainer/VBoxContainer" instance=ExtResource("4_4om5k")]
+layout_mode = 2
+id = "passive_income"
+cost = 400
+title = "Passive Income"
+description = "Recycles undestroyed barrels to increase income per barrel by 50%"
+
+[node name="Less_Knockback" parent="Control/ScrollContainer/VBoxContainer" instance=ExtResource("4_4om5k")]
+layout_mode = 2
+id = "less_knockback"
+cost = 300
+title = "Less Knockback"
+description = "Reduces the amount of knockback the king takes when being hit"
+
+[connection signal="pressed" from="Control/MarginContainer/TextureButton" to="Control/MarginContainer/TextureButton" method="start"]

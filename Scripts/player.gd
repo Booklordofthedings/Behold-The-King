@@ -10,7 +10,12 @@ var dash : Tween
 var dash_timer = 100
 var timer = 100
 
+var attack_timer = 1
+
 func _ready():
+	var q = get_node("/root/DataStore").read("quick_attack",false)
+	if q:
+		attack_timer = 0.5
 	position.x = 500
 	position.y = 300
 
@@ -38,7 +43,7 @@ func _physics_process(delta):
 		toRotate.rotation = 0
 		tween = get_tree().create_tween()
 		timer = 0
-		tween.parallel().tween_property(self, "timer", 100, 1)
+		tween.parallel().tween_property(self, "timer", 100, attack_timer)
 		tween.parallel().tween_property(toRotate, "rotation_degrees", 90, 0.1)
 		
 	if Input.is_action_just_pressed("player_dash") and dash_timer == 100:
