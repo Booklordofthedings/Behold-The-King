@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://be6qvivte1us3"]
+[gd_scene load_steps=13 format=3 uid="uid://be6qvivte1us3"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_4ifms"]
 [ext_resource type="Texture2D" uid="uid://bdwht7wa7w1vb" path="res://Assets/Sprites/Game/background.png" id="1_l02gg"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bpisp62o7qnmd" path="res://Assets/Sprites/Common/coin.png" id="5_a5osa"]
 [ext_resource type="FontFile" uid="uid://dstkdot5rkpn3" path="res://Assets/Fonts/Geizer.otf" id="6_t7gjj"]
 [ext_resource type="PackedScene" uid="uid://ch8xy86i17qvu" path="res://Scenes/Player.tscn" id="7_f8j10"]
+[ext_resource type="AudioStream" uid="uid://p8ndilt4fjcd" path="res://Assets/Music/Cruising for Goblins.mp3" id="8_k3kms"]
 
 [sub_resource type="Curve" id="Curve_donad"]
 max_value = 2.0
@@ -104,3 +105,8 @@ text = "100"
 vertical_alignment = 1
 
 [node name="Player" parent="." instance=ExtResource("7_f8j10")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_k3kms")
+volume_db = -18.0
+autoplay = true

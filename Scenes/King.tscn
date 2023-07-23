@@ -1,19 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://dccdpyni3p6uk"]
+[gd_scene load_steps=6 format=3 uid="uid://dccdpyni3p6uk"]
 
 [ext_resource type="Script" path="res://Scripts/king.gd" id="1_3kwt6"]
 [ext_resource type="Texture2D" uid="uid://dxp1fwjenib47" path="res://Assets/Sprites/King/king_sprites.png" id="1_4ianp"]
 [ext_resource type="Texture2D" uid="uid://vkhiisoyjo5h" path="res://Assets/Sprites/King/dust.png" id="3_q66j1"]
+[ext_resource type="AudioStream" uid="uid://ccolt4y857ylf" path="res://Assets/Sfx/Hit_Hurt.wav" id="4_b0bk5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qictc"]
 radius = 44.0
 height = 170.0
 
-[node name="King" type="CharacterBody2D" node_paths=PackedStringArray("stunned_sprite")]
+[node name="King" type="CharacterBody2D" node_paths=PackedStringArray("player", "stunned_sprite")]
 scale = Vector2(0.2, 0.2)
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_3kwt6")
 speed = 200
+player = NodePath("AudioStreamPlayer")
 stunned_sprite = NodePath("Sprite2D2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -27,3 +29,7 @@ shape = SubResource("CapsuleShape2D_qictc")
 position = Vector2(140, 5)
 scale = Vector2(6, 6)
 texture = ExtResource("3_q66j1")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_b0bk5")
+volume_db = -7.647

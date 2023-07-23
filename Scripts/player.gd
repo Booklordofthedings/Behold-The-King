@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var ability : TextureProgressBar
 @export var dash_abilit : TextureProgressBar
 @export var toRotate : Sprite2D
+@export var projectile : PackedScene
 var tween : Tween
 var dash : Tween
 var dash_timer = 100
@@ -45,6 +46,10 @@ func _physics_process(delta):
 		timer = 0
 		tween.parallel().tween_property(self, "timer", 100, attack_timer)
 		tween.parallel().tween_property(toRotate, "rotation_degrees", 90, 0.1)
+		
+		var to_instantiate = projectile.instantiate()
+		owner.add_child(to_instantiate)
+		to_instantiate.position = global_position
 		
 	if Input.is_action_just_pressed("player_dash") and dash_timer == 100:
 		dash_timer = 0

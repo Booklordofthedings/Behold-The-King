@@ -146,6 +146,13 @@ cost = 200
 title = "Pain Medication"
 description = "Reduces the amount of time that the king will be stunned after being hit by a person sized barrel."
 
+[node name="Less_Knockback" parent="Control/ScrollContainer/VBoxContainer" instance=ExtResource("4_4om5k")]
+layout_mode = 2
+id = "less_knockback"
+cost = 300
+title = "Less Knockback"
+description = "Reduces the amount of knockback the king takes when being hit"
+
 [node name="Passive_Income" parent="Control/ScrollContainer/VBoxContainer" instance=ExtResource("4_4om5k")]
 layout_mode = 2
 id = "passive_income"
@@ -153,11 +160,11 @@ cost = 400
 title = "Passive Income"
 description = "Recycles undestroyed barrels to increase income per barrel by 50%"
 
-[node name="Less_Knockback" parent="Control/ScrollContainer/VBoxContainer" instance=ExtResource("4_4om5k")]
+[node name="Barrel_Uncertainty" parent="Control/ScrollContainer/VBoxContainer" instance=ExtResource("4_4om5k")]
 layout_mode = 2
-id = "less_knockback"
-cost = 300
-title = "Less Knockback"
-description = "Reduces the amount of knockback the king takes when being hit"
+id = "barrel_uncertainty"
+cost = 600
+title = "Uncertain Barrels"
+description = "Makes barrrels not spawn with a 1/5 chance"
 
 [connection signal="pressed" from="Control/MarginContainer/TextureButton" to="Control/MarginContainer/TextureButton" method="start"]

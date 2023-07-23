@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://ch8xy86i17qvu"]
+[gd_scene load_steps=10 format=3 uid="uid://ch8xy86i17qvu"]
 
 [ext_resource type="Texture2D" uid="uid://b51wfwymat088" path="res://Assets/Sprites/Player/player_sprites.png" id="1_6nhjj"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_w3ppi"]
+[ext_resource type="PackedScene" uid="uid://cgemj3ru8ftlu" path="res://Scenes/Projectiles.tscn" id="2_umyvx"]
 [ext_resource type="Texture2D" uid="uid://ssux2eyw1q5k" path="res://Assets/Sprites/Player/attack_symbol.png" id="3_q0xqy"]
 [ext_resource type="Script" path="res://Scripts/attack.gd" id="4_qwbl8"]
 [ext_resource type="Texture2D" uid="uid://bm8efr33cimhi" path="res://Assets/Sprites/Player/Scythe.png" id="4_te721"]
@@ -23,6 +24,7 @@ attack = NodePath("Area2D")
 ability = NodePath("../Control/MarginContainer/HBoxContainer/VBoxContainer/TextureProgressBar")
 dash_abilit = NodePath("../Control/MarginContainer/HBoxContainer/VBoxContainer2/TextureProgressBar")
 toRotate = NodePath("Area2D/Sprite2D")
+projectile = ExtResource("2_umyvx")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 texture = ExtResource("1_6nhjj")

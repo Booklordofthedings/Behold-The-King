@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var speed = 250
 @export var hor_speed = 60
 @export var barrier = 600
+@export var player : AudioStreamPlayer
 var direction = 1;
 
 func _ready():
@@ -48,6 +49,7 @@ var stunned_tween : Tween
 # Does stunning and knocking back
 func on_knockback(res):
 	if res.get_collider_velocity().x !=0:
+		player.play()
 		#Handles the stunning and knockback over time
 		stunned_tween = get_tree().create_tween();
 		_stunned_knockback = Vector2(stunned_knockback,0)

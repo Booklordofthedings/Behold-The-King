@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b45aueh2df3q3"]
+[gd_scene load_steps=11 format=3 uid="uid://b45aueh2df3q3"]
 
 [ext_resource type="Texture2D" uid="uid://bpisp62o7qnmd" path="res://Assets/Sprites/Common/coin.png" id="1_olk3t"]
 [ext_resource type="Texture2D" uid="uid://dul2sp8thx21m" path="res://Assets/Sprites/Shop/bars.png" id="1_pldl3"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/shopItem.gd" id="2_wgw52"]
 [ext_resource type="FontFile" uid="uid://dstkdot5rkpn3" path="res://Assets/Fonts/Geizer.otf" id="3_ptq8y"]
 [ext_resource type="FontFile" uid="uid://c63bc80eb1jbi" path="res://Assets/Fonts/alagard.ttf" id="5_tflj7"]
+[ext_resource type="AudioStream" uid="uid://bcttlwe7mh20m" path="res://Assets/Sfx/Pickup_Coin37.wav" id="7_0o4fu"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y3w4a"]
 content_margin_left = 0.0
@@ -23,7 +24,7 @@ content_margin_bottom = 3.0
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5of4t"]
 bg_color = Color(0, 0, 0, 0.513726)
 
-[node name="PanelContainer" type="PanelContainer" node_paths=PackedStringArray("item_title_label", "item_cost_label", "item_description_label", "item_icon", "item_unavailable")]
+[node name="PanelContainer" type="PanelContainer" node_paths=PackedStringArray("item_title_label", "item_cost_label", "item_description_label", "item_icon", "item_unavailable", "sound")]
 theme_override_styles/panel = SubResource("StyleBoxTexture_y3w4a")
 script = ExtResource("2_wgw52")
 cost = 0
@@ -33,6 +34,7 @@ item_cost_label = NodePath("PanelContainer/VBoxContainer2/HBoxContainer2/Label")
 item_description_label = NodePath("PanelContainer/VBoxContainer2/HBoxContainer/VBoxContainer/Description")
 item_icon = NodePath("PanelContainer/VBoxContainer2/HBoxContainer/TextureRect")
 item_unavailable = NodePath("Panel")
+sound = NodePath("AudioStreamPlayer")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
@@ -93,6 +95,9 @@ texture = ExtResource("1_olk3t")
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_5of4t")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_0o4fu")
 
 [connection signal="mouse_entered" from="." to="." method="on_entered"]
 [connection signal="mouse_exited" from="." to="." method="on_exited"]

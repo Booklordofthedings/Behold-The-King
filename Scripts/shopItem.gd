@@ -14,6 +14,7 @@ extends PanelContainer
 @export var item_description_label : Label
 @export var item_icon : TextureRect
 @export var item_unavailable : Panel
+@export var sound : AudioStreamPlayer
 
 var coins : int = 0
 
@@ -32,6 +33,7 @@ func _ready():
 func _process(delta):
 	if not Engine.is_editor_hint():
 		if Input.is_action_just_pressed("player_action") and in_focus and coins >= cost:
+			sound.play()
 			get_node("/root/DataStore").write("coins", coins - cost)
 			get_node("/root/DataStore").write(id,"1")
 			get_tree().change_scene_to_file("res://Scenes/Shop.tscn")

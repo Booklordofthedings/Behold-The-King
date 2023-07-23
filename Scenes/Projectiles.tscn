@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgemj3ru8ftlu"]
+
+[ext_resource type="Script" path="res://Scripts/Projectiles.gd" id="1_djvfs"]
+[ext_resource type="Texture2D" uid="uid://bm8efr33cimhi" path="res://Assets/Sprites/Player/Scythe.png" id="1_eniyj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k8qud"]
+
+[node name="Projectiles" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 4
+script = ExtResource("1_djvfs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+texture = ExtResource("1_eniyj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_k8qud")
